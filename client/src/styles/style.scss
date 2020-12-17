@@ -1,0 +1,184 @@
+$primary_color: #FFF159;
+$light_grey: #EEEEEE;
+$dark_grey: #BBBBBB;
+
+body{
+    margin: 0px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#search{
+    background-color: $primary_color;
+    text-align: center;
+    padding: 10px;
+
+    img{
+        vertical-align: middle;
+    }
+
+    input, input:focus{
+        width: 70%;
+        padding: 7px;
+        border: none;
+        outline: none;
+        margin-left: 20px;
+    }
+
+    span{
+        background-color: $light_grey;
+        padding: 5px 8px 8px 8px;
+        cursor: pointer;
+    }
+}
+
+#results{
+    background-color: $light_grey;
+    text-align: center;
+
+    #results_content{
+        width: 78%;
+        display: inline-block;
+    }
+
+    .result_row{
+        height: 200px;
+        background-color: white;
+        padding: 20px;
+        border-bottom: 1px solid $light_grey;
+
+        div{
+            height: 100%;
+            float: left;
+
+            img{
+                height: 100%;
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+
+        div:first-child{
+            width: 20%;
+        }
+
+        div:last-child{
+            width: 80%;
+            text-align: left;
+            padding: 10px;
+
+            .price{
+                float: left;
+                font-size: 22px;
+
+                img{
+                    width: 20px;
+                    vertical-align: bottom;
+                    margin-left: 8px;
+                }
+            }
+
+            .title{
+                float: left;
+                clear: left;
+                width: 60%;
+                font-size: 18px;
+                margin-top: 20px;
+            }
+
+            .location{
+                float: right;
+                font-size: 14px;
+                color: $dark_grey;
+            }
+
+            a{
+                color: black;
+            }
+        }
+    }
+}
+
+#detail{
+    background-color: $light_grey;
+    text-align: center;
+
+    #detail_box_content{
+        width: 78%;
+        padding: 20px;
+        background-color: white;
+        text-align: left;
+        display: inline-block;
+
+        #detail_box_content_head{
+            
+            div:first-child{
+                float: left;
+                width: 65%;
+                
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            
+            div:last-child{
+                float: right;
+                width: 25%;
+
+                div{
+                    float: none;
+                }
+
+                .condition{
+                    font-size: 14px;
+                }
+
+                .title{
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                }
+
+                .price{
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+
+                .button{
+                    background-color:dodgerblue;
+                    color: white;
+                    margin-top: 20px;
+                    padding: 10px;
+                    width: 100%;
+                    display: inline-block;
+                    text-align: center;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        #detail_box_content_body{
+            clear: both;
+            padding-top: 30px;
+
+            div:first-child{
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+
+            div:last-child{
+                color: #777777;
+
+                pre{
+                    font-family: inherit;
+                    white-space: break-spaces;
+                }
+            }
+        }
+    }
+}
