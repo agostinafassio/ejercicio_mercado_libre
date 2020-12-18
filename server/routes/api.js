@@ -35,26 +35,39 @@ router.get('/items', function(req, res) {
 router.get('/items/:id', function(req, res) {
     fetch('https://api.mercadolibre.com/items/' + req.params.id)
     .then(res => res.json())
-    .then(json => {
+    .then(json_item => {
         let result = {
             author: {name: 'Agostina', lastName: 'Fassio'}
         };
         result.item = {
-            id: json.id,
-            title: json.title,
-            price: {currency: json.currency_id, amount: json.price},
-            picture: json.pictures[0].url,
-            condition: json.condition,
-            free_shipping: json.shipping.free_shipping,
-            sold_quantity: json.sold_quantity
+            id: json_item.id,
+            title: json_item.title,
+            price: {currency: json_item.currency_id, amount: json_item.price},
+            picture: json_item.pictures[0].url,
+            condition: json_item.condition,
+            free_shipping: json_item.shipping.free_shipping,
+            sold_quantity: json_item.sold_quantity
         };
         fetch('https://api.mercadolibre.com/items/' + req.params.id + '/description')
         .then(res => res.json())
-        .then(json => {
-            result.item.description = json.plain_text
-            res.send(result);
+        .then(json_description => {
+            result.item.description = json_description.plain_text;
+            fetch('https://api.mercadolibre.com/categories/' + json_item.category_id)
+            .then(res => res.json())
+            .then(json_category => {
+                result.categories = [];
+                json_category.path_from_root.forEach(category => {
+                    result.categories.push(category.name);
+                });
+                res.send(result);
+            });
         });
     });
+});
+
+process.on('unhandledRejection', error => {
+    console.log(error);
+    process.exit();
 });
 
 module.exports = router;

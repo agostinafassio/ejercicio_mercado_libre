@@ -3,9 +3,14 @@ import {Breadcrumb} from './generic';
 import {server} from '../App';
 import ic_shipping from '../images/ic_shipping.png';
 
-export class Results extends React.Component {
-    state = {results: []};
-
+type ResultsProps = {
+};
+type ResultsState = {
+    results: any,
+    categories: [],
+    error: boolean
+};
+export class Results extends React.Component<ResultsProps, ResultsState> {
     componentDidMount(){
         const params = new URLSearchParams(window.location.search);
         fetch(server + "/api/items?q=" + params.get('search'))
@@ -14,20 +19,33 @@ export class Results extends React.Component {
             let results = [];
             for(let result of json.items){
                 results.push(<ResultRow key={result.id} properties={result}/>);
-            } 
+            }
             this.setState({results: results, categories: json.categories});
+        })
+        .catch(err => {
+            this.setState({error: true});
         });
     }
 
     render() {
-        return (
-            <div id="results">
-                <div id="results_content">
-                    <Breadcrumb/>
-                    {this.state.results}
-                </div>
-            </div>
-        );
+        if(this.state){
+            if(!this.state.error){
+                return (
+                    <div id="results">
+                        <div id="results_content">
+                            <Breadcrumb categories={this.state.categories}/>
+                            {this.state.results}
+                        </div>
+                    </div>
+                );
+            }
+            else{
+                return <div className="error">Error de api</div>;
+            }
+        }
+        else{
+            return <div className="loading">Cargando...</div>;
+        }
     }
 }
 

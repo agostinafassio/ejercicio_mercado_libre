@@ -1,9 +1,15 @@
 import React from 'react';
 
-export class Breadcrumb extends React.Component {
+type BreadcrumbProps = {
+    categories: [];
+};
+type BreadcrumbState = {
+};
+export class Breadcrumb extends React.Component<BreadcrumbProps, BreadcrumbState> {
     render() {
         return (
-            <div>
+            <div id="breadcrumb">
+                {this.props.categories && this.props.categories.join(' > ')}
             </div>
         );
     }

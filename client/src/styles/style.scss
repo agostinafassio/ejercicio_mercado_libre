@@ -1,6 +1,6 @@
 $primary_color: #FFF159;
 $light_grey: #EEEEEE;
-$dark_grey: #BBBBBB;
+$dark_grey: #999999;
 
 body{
     margin: 0px;
@@ -32,6 +32,12 @@ body{
         padding: 5px 8px 8px 8px;
         cursor: pointer;
     }
+}
+
+#breadcrumb{
+    text-align: left;
+    color: $dark_grey;
+    padding: 10px 0px;
 }
 
 #results{
@@ -105,80 +111,99 @@ body{
     background-color: $light_grey;
     text-align: center;
 
-    #detail_box_content{
+    #detail_content{
         width: 78%;
-        padding: 20px;
-        background-color: white;
-        text-align: left;
         display: inline-block;
+        
+        #detail_box{
+            text-align: left;
+            background-color: white;
+            padding: 20px;
 
-        #detail_box_content_head{
-            
-            div:first-child{
-                float: left;
-                width: 65%;
+            #detail_box_head{
                 
-                img{
-                    height: 100%;
-                    width: 100%;
+                div:first-child{
+                    float: left;
+                    width: 65%;
+                    
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                
+                div:last-child{
+                    float: right;
+                    width: 25%;
+
+                    div{
+                        float: none;
+                    }
+
+                    .condition{
+                        font-size: 14px;
+                    }
+
+                    .title{
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-top: 5px;
+                        margin-bottom: 10px;
+                    }
+
+                    .price{
+                        font-size: 28px;
+                        font-weight: bold;
+                    }
+
+                    .button{
+                        background-color:dodgerblue;
+                        color: white;
+                        margin-top: 20px;
+                        padding: 10px;
+                        width: 100%;
+                        display: inline-block;
+                        text-align: center;
+                        cursor: pointer;
+                        border-radius: 5px;
+                    }
                 }
             }
-            
-            div:last-child{
-                float: right;
-                width: 25%;
 
-                div{
-                    float: none;
-                }
+            #detail_box_body{
+                clear: both;
+                padding-top: 30px;
 
-                .condition{
-                    font-size: 14px;
-                }
-
-                .title{
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-top: 5px;
+                div:first-child{
+                    font-size: 22px;
                     margin-bottom: 10px;
                 }
 
-                .price{
-                    font-size: 28px;
-                    font-weight: bold;
-                }
+                div:last-child{
+                    color: #777777;
 
-                .button{
-                    background-color:dodgerblue;
-                    color: white;
-                    margin-top: 20px;
-                    padding: 10px;
-                    width: 100%;
-                    display: inline-block;
-                    text-align: center;
-                    cursor: pointer;
-                    border-radius: 5px;
-                }
-            }
-        }
-
-        #detail_box_content_body{
-            clear: both;
-            padding-top: 30px;
-
-            div:first-child{
-                font-size: 22px;
-                margin-bottom: 10px;
-            }
-
-            div:last-child{
-                color: #777777;
-
-                pre{
-                    font-family: inherit;
-                    white-space: break-spaces;
+                    pre{
+                        font-family: inherit;
+                        white-space: break-spaces;
+                    }
                 }
             }
         }
     }
+}
+
+%message{
+    text-align: center;
+    padding: 30px;
+    font-size: 30px;
+}
+
+div.loading{
+    @extend %message;
+    color: $dark_grey;
+}
+
+div.error{
+    @extend %message;
+    color: red;
 }
