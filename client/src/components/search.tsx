@@ -17,7 +17,7 @@ export class Search extends React.Component {
         let input:string = (document.querySelector('input[name="search"]') as HTMLInputElement).value;
         if(input){
             input = encodeURIComponent(input);
-            window.location.href = 'items?search=' + input;
+            window.location.href = '/items?search=' + input;
         }
     };
 
