@@ -1,3 +1,5 @@
+//To run tests: npm run test:e2e
+
 it("loads", () => {
   cy.visit("/");
 });
